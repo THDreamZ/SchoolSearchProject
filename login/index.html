@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="content">
+            <img class="login-img images" src="./asset/login.jpg" alt="登录">
+            <img class="register-img images" src="./asset/register.jpg" alt="注册">
+            <div class="login-wrapper">
+                <div class="top-tips">
+                    <!-- <span>CAT IS LITTLE #FFF</span> -->
+                    <span> Ucloud  online</span>
+                    <span class="top-tips-span">注册</span>
+                </div>
+                <h1 class="h1-text">登录</h1>
+                <div class="other-login">
+                    <img src="./asset/QQ.png" alt="">
+                    <span>使用QQ登录</span>
+                </div>
+                <div class="login-form">
+                    <div class="user-form form-item">
+                        <div class="text-tips">
+                            <span>账号</span>
+                        </div>
+                        <input type="text">
+                    </div>
+                    <div class="password-form form-item">
+                        <div class="text-tips">
+                            <span>密码</span>
+                            <span class="forgot-password">忘记密码?</span>
+                        </div>
+                        <input type="password">
+                    </div>
+                    <button id="loginButton" class="btn" >登录</button>
+                </div>
+                <div class="register-form">
+                    <div class="user-form form-item">
+                        <div class="text-tips">
+                            <span>账号</span>
+                        </div>
+                        <input type="text">
+                    </div>
+                    <div class="password-form form-item">
+                        <div class="text-tips">
+                            <span>密码</span>
+                        </div>
+                        <input type="password">
+                    </div>
+                    <div class="password-form form-item">
+                        <div class="text-tips">
+                            <span>确认密码</span>
+                        </div>
+                        <input type="password">
+                    </div>
+                    <button class="btn">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let flag = 1;
+    //loginbutton
+    document.getElementById('loginButton').addEventListener('click', function () {
+        var targetURL = '../datatables/index.html';
+        //var targetURL = '../csv-to-html-table/index.html'
+        // 使用 window.location.href 跳转到目标页面
+        window.location.href = targetURL;
+    });    
+
+    document.querySelector('.top-tips-span').addEventListener('click', function () {
+        if (flag) {
+            document.querySelector('.content').classList.add("add-class-content");
+            document.querySelector('.login-img').classList.add("add-class-login-img");
+            document.querySelector('.register-img').classList.add("add-class-register-img");
+            document.querySelector('.login-img').classList.remove("add-class-login-img-show");
+            document.querySelector('.login-wrapper').style.height = '80vh';
+            document.querySelector('.content').style.height = '90vh';
+            document.querySelector('.login-form').style.display = 'none';
+            document.querySelector('.register-form').style.display = 'block';
+            document.querySelector('.top-tips-span').innerHTML = '登录';
+            document.querySelector('.h1-text').innerHTML = '注册';
+            flag = 0;
+        }
+        else {
+            document.querySelector('.content').classList.remove("add-class-content");
+            document.querySelector('.login-img').classList.remove("add-class-login-img");
+            document.querySelector('.login-img').classList.add("add-class-login-img-show");
+            document.querySelector('.register-img').classList.remove("add-class-register-img");
+            document.querySelector('.login-wrapper').style.height = '70vh';
+            document.querySelector('.content').style.height = '85vh';
+            document.querySelector('.login-form').style.display = 'block';
+            document.querySelector('.register-form').style.display = 'none';
+            document.querySelector('.top-tips-span').innerHTML = '注册';
+            document.querySelector('.h1-text').innerHTML = '登录';
+            flag = 1;
+        }
+    })
+
+
+
+
+
+</script>
+
+</html>
