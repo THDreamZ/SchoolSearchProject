@@ -10,17 +10,17 @@ $(document).ready(function () {
     // 2) Hide columns 3 and 4
     // Use when you want to show a different view
     // $('#maintable').dataTable({
-    //     "columnDefs": [
-    //         {
-    //             "targets": [2],
-    //             "visible": false,
-    //             "searchable": false
-    //         },
-    //         {
-    //             "targets": [3],
-    //             "visible": false
-    //         }
-    //     ]
+        // "columnDefs": [
+        //     {
+        //         "targets": [2],
+        //         "visible": false,
+        //         "searchable": false
+        //     },
+        //     {
+        //         "targets": [3],
+        //         "visible": false
+        //     }
+        // ]
     // });
 
     // 3) Add the following buttons:
@@ -40,37 +40,37 @@ $(document).ready(function () {
         ],
         buttons: [
             'pageLength',
-            // {
-            //     extend: 'copyHtml5',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
-            // {
-            //     extend: 'excelHtml5',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
-            // {
-            //     extend: 'csvHtml5',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
-            // {
-            //     extend: 'print',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
-            // {
-            //     extend: 'pdfHtml5',
-            //     download: 'open',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'csvHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                download: 'open',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
             'colvis'
         ],
         columDefs: [{
