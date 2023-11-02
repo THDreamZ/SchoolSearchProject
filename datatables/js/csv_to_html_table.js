@@ -16,7 +16,7 @@ CsvToHtmlTable = {
             customTemplates[colIdx] = func;
         });
 
-        var $table = $("<table class='table table-striped table-condensed cdisplay compact cell-border' id='" + el + "-table'></table>");
+        var $table = $("<table class='table table-striped table-condensed cdisplay compact cell-border' id='new-table'></table>");
         var $containerElement = $("#" + el);
         $containerElement.empty().append($table);
 
@@ -55,6 +55,9 @@ CsvToHtmlTable = {
                 if (allow_download) {
                     $containerElement.append("<p><a class='btn btn-info' href='" + csv_path + "'><i class='glyphicon glyphicon-download'></i> Download as CSV</a></p>");
                 }
+         
             });
+       
+
     }
 };
