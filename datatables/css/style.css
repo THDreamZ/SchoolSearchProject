@@ -2,16 +2,35 @@
     font-family: "Glyphicons Halflings";
     src: url("../fonts/glyphicons-halflings-regular.woff2");
 }
+table.dataTable thead th {
+    font-size: 14px; /* 设置合适的字体大小 */
+}
 
+/* 设置表格内容中的字体大小 */
+table.dataTable tbody td {
+    font-size: 15px; /* 设置合适的字体大小 */
+}
+#table-container {
+    width: 100%; /* 设置容器宽度为100%或适当的宽度 */
+    overflow-x: auto; /* 启用水平滚动条 */
+}
 .container {
-    margin-top: 20px;
+    width: 100vw;
+    margin-left: 0;
+    margin-right: 0;
+    /* border: 1px solid #ccc; */
+    border: 10px;
+    justify-content: center; /* 水平居中 */
+    background: linear-gradient(to right, #d4d0d0, rgb(213, 235, 213));
 }
-
+.dataTables_scrollHead{
+    height: auto;
+}
 thead {
-    background-color: rgba(244, 67, 54, 0.85);
+    background-color: rgba(201, 63, 47, 0.85);
     color: #fff;
+    text-align: center;
 }
-
 mark {
     background-color: #f4f57a;
     padding: 0;

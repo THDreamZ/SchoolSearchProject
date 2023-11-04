@@ -39,38 +39,6 @@ $(document).ready(function () {
             ['10行每页', '25行每页', '50行每页', '100行每页', '展示所有内容']
         ],
         buttons: [
-            'pageLength',
-            // {
-            //     extend: 'copyHtml5',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
-            // {
-            //     extend: 'excelHtml5',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
-            // {
-            //     extend: 'csvHtml5',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
-            // {
-            //     extend: 'print',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
-            // {
-            //     extend: 'pdfHtml5',
-            //     download: 'open',
-            //     exportOptions: {
-            //         columns: ':visible'
-            //     }
-            // },
             'colvis'
         ],
         columDefs: [{

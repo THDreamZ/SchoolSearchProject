@@ -10,49 +10,47 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <title>School Tables</title>
+    <style>
+        .header {
+            color: black;
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body class="container">
-<h1 class="text-center">网申学校详情</h1>
-
-<!-- <table id="maintable" class="display compact cell-border" cellspacing="0" width="100%">
-    <thead>
-    <tr>
-        <th>排名</th>
-        <th>学校英文</th>
-        <th>学校中文</th>
-        <th>地理位置</th>
-        <th>申请大类</th>
-        <th>专业</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td> 1</td>
-        <td> HFUT</td>
-        <td> 合肥工业大学</td>
-        <td> 安徽省合肥市</td>
-        <td> 计算机</td>
-        <td> 计算机科学与技术</td>
-    </tr>
-    </tbody>
-    <tfoot style="background-color: #c0c0c0; color: #ffffff; font-size: 0.9em; ">
-    <tr>
-        <th>排名</th>
-        <th>学校英文</th>
-        <th>学校中文</th>
-        <th>地理位置</th>
-        <th>申请大类</th>
-        <th>专业</th>
-    </tr>
-    </tfoot>
-</table> -->
-<div id="table-container"></div>
+<div class="header">
+    <h1>网申学校详情</h1>
+</div>
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="detailsModalLabel">详情页</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" id="detailsModalBody">
+            <!-- Details content will be displayed here -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
+<div id="table-container" style="margin-left: auto;"></div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>        
-
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script> -->
+<script src="js/bootstrap.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
 <!-- <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="js/jszip.min.js"></script>
@@ -66,6 +64,7 @@
 <script type="text/javascript" src="js/datatables.mark.js"></script>
 <script type="text/javascript" src="js/buttons.colVis.min.js"></script>
 <script type="text/javascript" src="js/csv_to_html_table.js"></script>
+
 <!-- <footer><a href="https://datatables.net/">DataTables</a></footer> -->
 <script>
     CsvToHtmlTable.init({
@@ -77,16 +76,100 @@
             delimiter: '"'
         },
         datatables_options: {
+            lengthChange: false, 
+            scrollX: true,
             paging: true,
             dom: 'B<"clear">lfrtip',
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                ['10行每页', '25行每页', '50行每页', '100行每页', '展示所有内容']
+            ],
             buttons: [
+                'pageLength',
                 'colvis'
             ],
-            columDefs: [{
-                targets: -1,
-                visible: false
-            }]
-            
+            columnDefs: [
+                {
+                    "targets": [11],
+                    "visible": false,
+                    "searchable":true
+                },
+                {
+                    "targets": [12],
+                    "visible": false,
+                    "searchable":true
+                },
+                {
+                    "targets": [13],
+                    "visible": false,
+                    "searchable":true
+                },
+                {
+                    "targets": [14],
+                    "visible": false,
+                    "searchable":true
+                },
+                {
+                    "targets": [15],
+                    "visible": false,
+                    "searchable":true
+                },
+                {
+                    "targets": [16],
+                    "visible": false,
+                    "searchable":true
+                },
+                {
+                    "targets": [17],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [19],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [20],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [21],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [22],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [23],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [-4],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [-2],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [-3],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [-4],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [-5],
+                    "visible": false,
+                    "searchable":true
+                },{
+                    "targets": [-6],
+                    "visible": false,
+                    "searchable":true
+                }
+            ]
+        
         }
     });
 </script>
