@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Tables</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="box">
+        <div class="content">
+            <img class="login-img images" src="{% static 'login.jpg' %}" alt="登录">
+            <img class="register-img images" src="{% static 'register.jpg' %}" alt="注册">
+            <div class="login-wrapper">
+                <div class="top-tips">
+                    <!-- <span>CAT IS LITTLE #FFF</span> -->
+                    <span> 网申学校数据库</span>
+                    <span class="top-tips-span">注册</span>
+                </div>
+                <h1 class="h1-text">登录</h1>
+                <div class="login-form">
+                    <div class="user-form form-item" id='UserName'>
+                        <div class="text-tips" >
+                            <span>用户名</span>
+                        </div>
+                        <input type="text">
+                    </div>
+                    <div class="password-form form-item" id='UserPassword'>
+                        <div class="text-tips">
+                            <span>密码</span>
+                            <!--span class="forgot-password">忘记密码?</span-->
+                        </div>
+                        <input type="password">
+                    </div>
+                    <button id="loginButton" class="btn" >登录</button>
+                </div>
+                <div class="register-form">
+                    <div class="user-form form-item" id='registUserName'>
+                        <div class="text-tips">
+                            <span>账号</span>
+                        </div>
+                        <input type="text">
+                    </div>
+                    <div class="password-form form-item" id='registUserPassword'>
+                        <div class="text-tips">
+                            <span>密码</span>
+                        </div>
+                        <input type="password">
+                    </div>
+                    <div class="password-form form-item" id='confirmPassword'>
+                        <div class="text-tips">
+                            <span>确认密码</span>
+                        </div>
+                        <input type="password">
+                    </div>
+                    <div class="user-form form-item" id='inviteCode'>
+                        <div class="text-tips">
+                            <span>邀请码</span>
+                        </div>
+                        <input type="text">
+                    </div>
+                    <button id="registButton" class="btn">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let flag = 1;
+    //loginbutton
+    document.getElementById('loginButton').addEventListener('click', function () {
+
+        var UserName = document.getElementById('UserName').querySelector('input').value;
+        var UserPassword = document.getElementById('UserPassword').querySelector('input').value;
+
+        if (UserName == 'admin'){
+            window.alert('登陆成功！')
+            window.location.href='/index'
+        }else{
+            window.alert('用户名或密码错误！')
+        }
+
+        //var targetURL = '/index';
+        //var targetURL = '../csv-to-html-table/index.html'
+        // 使用 window.location.href 跳转到目标页面
+        //window.location.href = targetURL;
+    });    
+
+    document.getElementById('registButton').addEventListener('click', function () {
+
+        var UserName = document.getElementById('registUserName').querySelector('input').value;
+        var UserPassword = document.getElementById('registUserPassword').querySelector('input').value;
+        var confirmPassword = document.getElementById('confirmPassword').querySelector('input').value;
+        var inviteCode = document.getElementById('inviteCode').querySelector('input').value;
+
+        if (UserPassword != confirmPassword){
+            window.alert('两次密码输入不一致！')
+        }
+
+        if (inviteCode != 114514){
+            window.alert('邀请码错误！')
+        }else{
+            window.alert('注册成功！')
+            window.location.href='/login'
+        }
+
+        console.log(UserName,UserPassword,confirmPassword,inviteCode)
+
+        //var targetURL = '/index';
+        //var targetURL = '../csv-to-html-table/index.html'
+        // 使用 window.location.href 跳转到目标页面
+        //window.location.href = targetURL;
+    });    
+
+    document.querySelector('.top-tips-span').addEventListener('click', function () {
+        if (flag) {
+            document.querySelector('.content').classList.add("add-class-content");
+            document.querySelector('.login-img').classList.add("add-class-login-img");
+            document.querySelector('.register-img').classList.add("add-class-register-img");
+            document.querySelector('.login-img').classList.remove("add-class-login-img-show");
+            document.querySelector('.login-wrapper').style.height = '80vh';
+            document.querySelector('.content').style.height = '90vh';
+            document.querySelector('.login-form').style.display = 'none';
+            document.querySelector('.register-form').style.display = 'block';
+            document.querySelector('.top-tips-span').innerHTML = '登录';
+            document.querySelector('.h1-text').innerHTML = '注册';
+            flag = 0;
+        }
+        else {
+            document.querySelector('.content').classList.remove("add-class-content");
+            document.querySelector('.login-img').classList.remove("add-class-login-img");
+            document.querySelector('.login-img').classList.add("add-class-login-img-show");
+            document.querySelector('.register-img').classList.remove("add-class-register-img");
+            document.querySelector('.login-wrapper').style.height = '70vh';
+            document.querySelector('.content').style.height = '85vh';
+            document.querySelector('.login-form').style.display = 'block';
+            document.querySelector('.register-form').style.display = 'none';
+            document.querySelector('.top-tips-span').innerHTML = '注册';
+            document.querySelector('.h1-text').innerHTML = '登录';
+            flag = 1;
+        }
+    })
+
+
+
+
+
+</script>
+
+</html>
