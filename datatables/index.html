@@ -14,8 +14,19 @@
         .header {
             color: black;
             font-style: italic;
-            padding: 20px;
+            padding: 10px;
+            padding-right: 0%;
             text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .login-info {
+            /* margin-right: 20px; */
+        }
+        .header h1 {
+            flex: 1;
+            text-align: center; 
         }
     </style>
 </head>
@@ -23,6 +34,10 @@
 <body class="container">
 <div class="header">
     <h1>网申学校详情</h1>
+    <div class="login-info" style="float: right; margin-right: 20px; margin-top: 10px;">
+        <span id="login-label">已登录：[您的用户名]</span>
+        <button id="logout-button" class="btn btn-secondary">退出</button>
+    </div>
 </div>
 <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
