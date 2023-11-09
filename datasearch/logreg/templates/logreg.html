@@ -69,13 +69,35 @@
         </div>
     </div>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-    let flag = 1;
+
+
+    let flag = 0;
     //loginbutton
     document.getElementById('loginButton').addEventListener('click', function () {
 
         var UserName = document.getElementById('UserName').querySelector('input').value;
         var UserPassword = document.getElementById('UserPassword').querySelector('input').value;
+
+        $.ajax({
+            type:"POST",
+            url:"",
+            contentType:"application/json",
+            dataType:"json",
+            data:JSON.stringify({"username":UserName,"password":UserPassword}),
+            success: function(result){
+                if(result.error_code==0){
+                    window.alert("success")
+                }else{
+                    window.alert(result.msg)
+                }
+            },
+            error:function(){
+                window.alert("submit failed")
+            }
+        })
 
         if (UserName == 'admin'){
             window.alert('登陆成功！')

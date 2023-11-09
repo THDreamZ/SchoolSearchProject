@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.dataTables.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <!--link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/dataTables.bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/buttons.dataTables.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
@@ -14,167 +18,213 @@
     <style>
         .header {
             color: black;
-            font-style: italic;
-            padding: 20px;
+            padding: 10px;
+            padding-right: 0%;
             text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .login-info {
+            /* margin-right: 20px; */
+        }
+        .header h1 {
+            flex: 1;
+            text-align: center; 
         }
     </style>
 </head>
 
+
+
 <body class="container">
-<div class="header">
-    <h1>网申学校详情</h1>
-</div>
-<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="detailsModalLabel">详情页</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">网申学校详情</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">已登录：[您的用户名]</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">退出</a></li>
+          </ul>
         </div>
-        <div class="modal-body" id="detailsModalBody">
-            <!-- Details content will be displayed here -->
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+      </nav>
+        
+    
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">详情页</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="detailsModalBody">
+                <!-- Details content will be displayed here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
         </div>
     </div>
-</div>
-<div id="table-container" style="margin-left: auto;"></div>
+    <div id="table-container" style="margin-left: auto;"></div>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script> -->
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
-<!-- <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script> -->
-<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+      <!-- Site footer -->
+    <footer class="site-footer">
 
-<script src="{% static "js/jquery-3.3.1.min.js" %}"></script>       
-<script src="{% static "js/bootstrap.js" %}"></script>
-<script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/dataTables.buttons.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/jszip.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/pdfmake.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/jquery.csv.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/vfs_fonts.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/buttons.html5.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/buttons.print.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/jquery.mark.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/datatables.mark.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/buttons.colVis.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/csv_to_html_table.js' %}"></script>
+        <hr>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+              <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by 
+            <a href="#">Lan</a>.
+              </p>
+            </div>
+  
+            <div class="col-md-4 col-sm-6 col-xs-12">
+            </div>
+          </div>
+        </div>
+    </footer>
 
-<!-- <footer><a href="https://datatables.net/">DataTables</a></footer> -->
-<script>
-    CsvToHtmlTable.init({
-        csv_path: "{% static 'data/data.csv'%}",
-        element: "table-container",
-        allow_download: true,
-        csv_options: {
-            separator: ",",
-            delimiter: '"'
-        },
-        datatables_options: {
-            lengthChange: false, 
-            scrollX: true,
-            paging: true,
-            dom: 'B<"clear">lfrtip',
-            lengthMenu: [
-                [10, 25, 50, 100, -1],
-                ['10行每页', '25行每页', '50行每页', '100行每页', '展示所有内容']
-            ],
-            buttons: [
-                'pageLength',
-                'colvis'
-            ],
-            columnDefs: [
-                {
-                    "targets": [11],
-                    "visible": false,
-                    "searchable":true
-                },
-                {
-                    "targets": [12],
-                    "visible": false,
-                    "searchable":true
-                },
-                {
-                    "targets": [13],
-                    "visible": false,
-                    "searchable":true
-                },
-                {
-                    "targets": [14],
-                    "visible": false,
-                    "searchable":true
-                },
-                {
-                    "targets": [15],
-                    "visible": false,
-                    "searchable":true
-                },
-                {
-                    "targets": [16],
-                    "visible": false,
-                    "searchable":true
-                },
-                {
-                    "targets": [17],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [19],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [20],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [21],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [22],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [23],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [-4],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [-2],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [-3],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [-4],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [-5],
-                    "visible": false,
-                    "searchable":true
-                },{
-                    "targets": [-6],
-                    "visible": false,
-                    "searchable":true
-                }
-            ]
-        
-        }
-    });
-</script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <!-- <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+
+    <!--script src="{% static "js/jquery-3.3.1.min.js" %}"></script>       
+    <script src="{% static "js/bootstrap.js" %}"></script-->
+    <script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jszip.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/pdfmake.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.csv.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vfs_fonts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/buttons.html5.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/buttons.print.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.mark.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/datatables.mark.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/buttons.colVis.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/csv_to_html_table.js' %}"></script>
+
+    <!-- <footer><a href="https://datatables.net/">DataTables</a></footer> -->
+    <script>
+        CsvToHtmlTable.init({
+            csv_path: "{% static 'data/data.csv'%}",
+            element: "table-container",
+            allow_download: true,
+            csv_options: {
+                separator: ",",
+                delimiter: '"'
+            },
+            datatables_options: {
+                lengthChange: false, 
+                scrollX: true,
+                paging: true,
+                dom: 'B<"clear">lfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, -1],
+                    ['10行每页', '25行每页', '50行每页', '100行每页', '展示所有内容']
+                ],
+                buttons: [
+                    'pageLength',
+                    'colvis'
+                ],
+                columnDefs: [
+                    {
+                        "targets": [11],
+                        "visible": false,
+                        "searchable":true
+                    },
+                    {
+                        "targets": [12],
+                        "visible": false,
+                        "searchable":true
+                    },
+                    {
+                        "targets": [13],
+                        "visible": false,
+                        "searchable":true
+                    },
+                    {
+                        "targets": [14],
+                        "visible": false,
+                        "searchable":true
+                    },
+                    {
+                        "targets": [15],
+                        "visible": false,
+                        "searchable":true
+                    },
+                    {
+                        "targets": [16],
+                        "visible": false,
+                        "searchable":true
+                    },
+                    {
+                        "targets": [17],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [19],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [20],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [21],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [22],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [23],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [-4],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [-2],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [-3],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [-4],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [-5],
+                        "visible": false,
+                        "searchable":true
+                    },{
+                        "targets": [-6],
+                        "visible": false,
+                        "searchable":true
+                    }
+                ]
+            
+            }
+        });
+    </script>
 </body>
 
 </html>
