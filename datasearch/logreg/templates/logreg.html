@@ -83,33 +83,22 @@
 
         $.ajax({
             type:"POST",
-            url:"",
+            url:"login/",
             contentType:"application/json",
             dataType:"json",
             data:JSON.stringify({"username":UserName,"password":UserPassword}),
             success: function(result){
                 if(result.error_code==0){
-                    window.alert("success")
+                    window.alert("登陆成功！")
+                    window.location.href='/index/?username='+encodeURIComponent(UserName)
                 }else{
                     window.alert(result.msg)
                 }
             },
             error:function(){
-                window.alert("submit failed")
+                window.alert("登陆失败")
             }
         })
-
-        if (UserName == 'admin'){
-            window.alert('登陆成功！')
-            window.location.href='/index'
-        }else{
-            window.alert('用户名或密码错误！')
-        }
-
-        //var targetURL = '/index';
-        //var targetURL = '../csv-to-html-table/index.html'
-        // 使用 window.location.href 跳转到目标页面
-        //window.location.href = targetURL;
     });    
 
     document.getElementById('registButton').addEventListener('click', function () {
@@ -123,14 +112,24 @@
             window.alert('两次密码输入不一致！')
         }
 
-        if (inviteCode != 114514){
-            window.alert('邀请码错误！')
-        }else{
-            window.alert('注册成功！')
-            window.location.href='/login'
-        }
-
-        console.log(UserName,UserPassword,confirmPassword,inviteCode)
+        $.ajax({
+            type:"POST",
+            url:"register/",
+            contentType:"application/json",
+            dataType:"json",
+            data:JSON.stringify({"username":UserName,"password":UserPassword,"inviteCode":inviteCode}),
+            success: function(result){
+                if(result.error_code==0){
+                    window.alert("注册成功！")
+                    window.location.href='/logreg'
+                }else{
+                    window.alert(result.msg)
+                }
+            },
+            error:function(){
+                window.alert("该用户已存在！")
+            }
+        })
 
         //var targetURL = '/index';
         //var targetURL = '../csv-to-html-table/index.html'

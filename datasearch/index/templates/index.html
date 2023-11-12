@@ -35,27 +35,34 @@
     </style>
 </head>
 
-
-
 <body class="container">
-
     <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">网申学校详情</a>
           </div>
+          {% if username %}
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">已登录：[您的用户名]</a></li>
+            <li class="active"><a href="#">已登录：{{username}}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">退出</a></li>
+            <li><a href="/index">退出</a></li>
           </ul>
+          {% else %}
+          <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li ><a href="/logreg">登录</a></li>
+            <li ><a href="/logreg">注册</a></li>
+          </ul>
+          {% endif %}
         </div>
       </nav>
         
-    
+    {% if username %}
     <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -75,16 +82,20 @@
         </div>
     </div>
     <div id="table-container" style="margin-left: auto;"></div>
+    {% else %}
+    <div class="row">
+        <h1 style="text-align: center">请登陆后查看！</h1>
+    </div>
+    {% endif %}
 
       <!-- Site footer -->
-    <footer class="site-footer">
-
+    <footer>
         <hr>
         <div class="container">
           <div class="row">
             <div class="col-md-8 col-sm-6 col-xs-12">
               <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by 
-            <a href="#">Lan</a>.
+                <a href="#">Lan</a>.
               </p>
             </div>
   
@@ -118,6 +129,7 @@
     <script type="text/javascript" src="{% static 'js/csv_to_html_table.js' %}"></script>
 
     <!-- <footer><a href="https://datatables.net/">DataTables</a></footer> -->
+    {% if username %}
     <script>
         CsvToHtmlTable.init({
             csv_path: "{% static 'data/data.csv'%}",
@@ -225,6 +237,7 @@
             }
         });
     </script>
+    {% endif %}
 </body>
 
 </html>
